@@ -1,0 +1,17 @@
+The document is divided into three sections:
+
+header
+nav
+section
+
+header: Here the app logo will display along with real time and weather 
+info. Weather icon and text is in one div to make it easier for orienting
+the two's position in uniform (flex)
+
+nav: Here the current month and week of the year will display next to
+buttons for calendar view and adding new to do items
+
+section: Here the back and fowards button will appear on the sides of 
+each day's to do lists. Above the to do list for each day the date will 
+appear. Each day div has a date and another div meant to serve as a flex
+for the list of to do items
