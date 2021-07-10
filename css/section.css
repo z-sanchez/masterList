@@ -5,15 +5,19 @@ section {
 
 .dayDisplay {
     background-color: white;
+    border-radius: 40px 40px 0 0;
     width: 25%;
     height: 660px;
 }
 
 .date {
-    text-align: center;
+    align-self: center;
+    position: relative;
+    bottom: 18px;
     font-family: sspsemibold;
+    padding: 10px 80px 10px 80px;
     background-color: #06D6A0;
-    width: 50px;
+    border-radius: 40px;
     color: white;
 }
 

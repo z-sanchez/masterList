@@ -46,6 +46,13 @@ Setting up Grid
     justify-content: center;
 }
 
+.dayDisplay {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+}
+
+
 
 #tempWidget {
     display: flex;
