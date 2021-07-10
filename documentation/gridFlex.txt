@@ -1,0 +1,4 @@
+Written boiler plate cleans html page and hides awkward overflow as well as resizing 
+images and changing background color.
+
+The grid needs work, if any. Flex classes are set up for all flex boxes in use.

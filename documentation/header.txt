@@ -1,0 +1,3 @@
+Fonts are imported
+
+simple styling including using two different fonts for the logo H1 header

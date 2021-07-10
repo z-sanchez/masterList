@@ -40,6 +40,13 @@ Setting up Grid
     justify-content: space-between;    
 }
 
+.navFlex {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+
 #tempWidget {
     display: flex;
     flex-flow: column;
@@ -48,3 +55,4 @@ Setting up Grid
 #headerWidgets {
     display: flex;
 }
+

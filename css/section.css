@@ -1,0 +1,23 @@
+section {
+    margin-top: 4%;
+}
+
+
+.dayDisplay {
+    background-color: white;
+    width: 25%;
+    height: 660px;
+}
+
+.date {
+    text-align: center;
+    font-family: sspsemibold;
+    background-color: #06D6A0;
+    width: 50px;
+    color: white;
+}
+
+section img {
+    margin-top: 10%;
+    height: 100px;
+}
