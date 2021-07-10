@@ -5,42 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MasterList</title>
+    <link href="/css/gridFlex.css" rel="stylesheet">
+    <link href="/css/header.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>MasterList</h1>
-        <p>3:20pm</p>
-        <div id="tempWidget">
-            <img src="/images/icons8-cloud-50.png" alt="cloud">
-            <p>75℉</p>
-        </div>
-    </header>
-    <nav>
-        <p>July - Week 28</p>
-        <img src="/images/calendar.png" alt="calendar">
-        <img src="/images/add.png" alt="addButton">
-    </nav>
-    <section>
-        <img src= "/images/back.png" alt="backButton">
-        <div class="dayDisplay">
-            <h2 class="date">7/12</h2>
-            <div class="itemList">
-                <p class="item">To Do Item 1</p>
+    <div id="grid">
+        <header class="flex">
+            <h1>Master<div id="fontBolder">List</div></h1>
+            <div id="headerWidgets">
+                <p id="time">3:20pm</p>
+                <div id="tempWidget">
+                    <img src="/images/icons8-cloud-50.png" alt="cloud">
+                    <p>75℉</p>
+                </div>
             </div>
-        </div>
-        <div class="dayDisplay">
-            <h2 class="date">7/13</h2>
-            <div class="itemList">
-                <p class="item">To Do Item 1</p>
+        </header>
+        <nav class="flex">
+            <p>July - Week 28</p>
+            <img class="customPhoto" src="/images/calendar.png" alt="calendar">
+            <img class="customPhoto" src="/images/add.png" alt="addButton">
+        </nav>
+        <section class="flex">
+            <img class="customPhoto" src= "/images/back.png" alt="backButton">
+            <div class="dayDisplay">
+                <h2 class="date">7/12</h2>
+                <div class="itemList">
+                    <p class="item">To Do Item 1</p>
+                </div>
             </div>
-        </div>
-        <div class="dayDisplay">
-            <h2 class="date">7/13</h2>
-            <div class="itemList">
-                <p class="item">To Do Item 1</p>
+            <div class="dayDisplay">
+                <h2 class="date">7/13</h2>
+                <div class="itemList">
+                    <p class="item">To Do Item 1</p>
+                </div>
             </div>
-        </div>
-        <img src="/images/foward.png" alt="fowardButton">
-    </section>
+            <div class="dayDisplay">
+                <h2 class="date">7/13</h2>
+                <div class="itemList">
+                    <p class="item">To Do Item 1</p>
+                </div>
+            </div>
+            <img class="customPhoto" src="/images/foward.png" alt="fowardButton">
+        </section>
+    </div>
 </body>
 </html>

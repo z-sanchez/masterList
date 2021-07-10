@@ -1,0 +1,67 @@
+
+/* 
+Importing Fonts
+*/
+
+@font-face {
+    font-family: ssplight;
+    src: url(/fonts/SourceSansPro-Light.ttf);
+}
+
+@font-face {
+    font-family: sspsemibold;
+    src: url(/fonts/SourceSansPro-SemiBold.ttf);
+}
+
+
+/* 
+Styling logo
+*/
+
+header {
+    background-color: #06D6A0;
+    padding-bottom: 2%;
+}
+
+header h1 {
+    display: inline-flex;
+    margin: 1% 0 0 30px;
+    font-family: ssplight;
+    font-size: 10vh;
+    color: white;
+}
+
+#fontBolder {
+    font-family: sspsemibold;
+}
+
+
+/* 
+Styling time icon
+*/
+
+#time {
+    align-self: center;
+    margin-right: 30px;
+    font-family: ssplight;
+    font-size: 2.5vh;
+    color: white;
+}
+
+
+
+/* 
+Styling weather icon
+*/
+
+#tempWidget {
+    width: 4vh;
+    margin: 13px 80px 0 0;
+}
+
+#tempWidget p {
+    align-self: center;
+    font-family: ssplight;
+    font-size: 2.5vh;
+    color: white;
+}
