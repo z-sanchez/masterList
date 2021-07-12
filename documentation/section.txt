@@ -1,0 +1,17 @@
+Section css file edits and styles the html section div
+
+.dayDisplay is responsible for being hte container for that specific day's to do list 
+
+.date is simply the style for the date on top of dayDisplay
+
+section img edits the two buttons on both sides of the lists
+
+.itemList is the flexbox for the list itself
+
+.listItemBorder is the div that contains every list item. In the html it holds within 
+the radio button and its label (the to do note). 
+
+.radio and .item are used to style themselves within the listItemBorder
+
+as of 7/12/21 the radio button still needs styling. I might use a different input type
+since the styling of the radio button is browser responsible and not css

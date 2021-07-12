@@ -12,6 +12,7 @@
 </head>
 <body>
     <div id="grid">
+
         <header class="flex">
             <h1>Master<div id="fontBolder">List</div></h1>
             <div id="headerWidgets">
@@ -22,35 +23,53 @@
                 </div>
             </div>
         </header>
+
         <nav class="navFlex">
             <img class="customPhoto" src="/images/calendar.png" alt="calendar">
             <p>July - Week 28</p>
             <img class="customPhoto" src="/images/add.png" alt="addButton">
         </nav>
+
         <section class="flex">
             <img class="customPhoto" src= "/images/back.png" alt="backButton">
             <div class="dayDisplay">
                 <h2 class="date">7/12</h2>
                 <div class="itemList">
-                    <p class="item">To Do Item 1</p>
-                    <p class="item">To Do Item 2</p>
-                    <p class="item">To Do Item 3</p>
+                    <div class="listItemBorder">
+                        <input type="radio" class="radio" value="done">
+                        <label class="item">To Do Item 1</label>
+                    </div>
+                    <div class="listItemBorder">
+                        <input type="radio" class="radio" value="done">
+                        <label class="item">To Do Item 2</label>
+                    </div>
+                    <div class="listItemBorder">
+                        <input type="radio" class="radio" value="done">
+                        <label class="item">To Do Item 3</label>
+                    </div>
                 </div>
             </div>
             <div class="dayDisplay">
                 <h2 class="date">7/13</h2>
                 <div class="itemList">
-                    <p class="item">To Do Item 1</p>
+                    <div class="listItemBorder">
+                        <input type="radio" class="radio" value="done">
+                        <label class="item">To Do Item 1</label>
+                    </div>
                 </div>
             </div>
             <div class="dayDisplay">
                 <h2 class="date">7/14</h2>
                 <div class="itemList">
-                    <p class="item">To Do Item 1</p>
+                    <div class="listItemBorder">
+                        <input type="radio" class="radio" value="done">
+                        <label class="item">To Do Item 1</label>
+                    </div>
                 </div>
             </div>
             <img class="customPhoto" src="/images/foward.png" alt="fowardButton">
         </section>
+
     </div>
 </body>
 </html>
