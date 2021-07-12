@@ -52,7 +52,11 @@ Setting up Grid
     justify-content: flex-start;
 }
 
-
+.itemList {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+}
 
 #tempWidget {
     display: flex;

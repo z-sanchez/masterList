@@ -7,7 +7,7 @@ section {
     background-color: white;
     border-radius: 40px 40px 0 0;
     width: 25%;
-    height: 660px;
+    height: 632px;
 }
 
 .date {
@@ -24,4 +24,19 @@ section {
 section img {
     margin-top: 10%;
     height: 100px;
+}
+
+
+.itemList {
+    align-self: center;
+    width: 80%;
+}
+
+.item {
+    margin-top: 5%;
+    padding: 10px 0 10px 70px;
+    border: 2px solid #118AB2;
+    border-radius: 30px 30px 30px 30px;
+    font-family: ssplight;
+    font-size: 2vh;
 }
