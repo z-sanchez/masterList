@@ -1,15 +1,25 @@
+
+/*
+spacing out section 
+*/
+
 section {
     margin-top: 4%;
 }
 
-
+/*
+Styling section for each day's list
+*/
 .dayDisplay {
     background-color: white;
     border-radius: 40px 40px 0 0;
     width: 25%;
-    height: 632px;
+    height: 631px;
 }
 
+/*
+Styles date on site
+*/
 .date {
     align-self: center;
     position: relative;
@@ -21,17 +31,25 @@ section {
     color: white;
 }
 
+/*
+Sizes buttons
+*/
 section img {
     margin-top: 10%;
     height: 100px;
 }
 
-
+/*
+centers and sizes actual list of todo items
+*/
 .itemList {
     align-self: center;
     width: 80%;
 }
 
+/*
+Styles border for items in list
+*/
 .listItemBorder {
     border: 2px solid #118AB2;
     border-radius: 30px 30px 30px 30px;
@@ -39,14 +57,20 @@ section img {
     padding: 10px 0 10px 0;
 }
 
+/*
+Styles radio
+*/
 .radio {
     margin: 0 30px 0 30px;
     position: relative;
-    top: 6px;
-    width: 25px;
-    height: 25px;
+    top: .3vh;
+    width: 2vh;
+    height: 2vh;
 }
 
+/*
+Edits fonts on item
+*/
 .item {
     font-family: ssplight;
     font-size: 2.5vh;
