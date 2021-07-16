@@ -13,9 +13,11 @@ function yearObject(yearName, monthArray) {
 
 //dayObjects: objects to be placed within month arrays
 //carry a date, number of to do tasks, actual task items, and a bool
-function dayObject(date) {
+function dayObject(date, month, year) {
 
-    this.date = date;
+    this.date = month + "/" + date;
+    this.month = month;
+    this.year = year;
     this.numTask = 0;
     this.taskArray = [];
     this.onScreen = false;
@@ -54,19 +56,19 @@ function fillMonthArray(year) {
         
         if (dayCountThirtyOne.includes(i)) { //if i equals a month ending in 31 days
             for (let j = 0; j < 31; ++j) {
-                year.monthArray[i][j] = new dayObject(j + 1); //fill array with 31 days
+                year.monthArray[i][j] = new dayObject(j + 1, i + 1, year.yearName); //fill array with 31 days
             }
         }
         else if (dayCountThirty.includes(i)) {
 
             for (let j = 0; j < 30; ++j) {
-                year.monthArray[i][j] = new dayObject(j + 1);
+                year.monthArray[i][j] = new dayObject(j + 1, i + 1, year.yearName);
             }
         }
         else {
 
             for (let j = 0; j < 28; ++j) { //case for february
-                year.monthArray[i][j] = new dayObject(j + 1);
+                year.monthArray[i][j] = new dayObject(j + 1, i + 1, year.yearName);
             }
         }
 
@@ -75,15 +77,15 @@ function fillMonthArray(year) {
 
     //handles leaps years
     if (year.yearName/4%1 == 0) { 
-        year.monthArray[1][28] = new dayObject(30);
+        year.monthArray[1][28] = new dayObject(29, 2, year.yearName);
     }
 
 }
 
 
 
-//test years 
-createYear(2021);
+createYear(2021); //current year
+//test years
 createYear(2024);
 createYear(2001);
 createYear(2421);

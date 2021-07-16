@@ -1,6 +1,19 @@
-function searchYears() {
+function searchYears(l, r, year) {
 
+    if (r >= l) {
+        let mid = l + Math.floor((r-l) / 2);
 
+        if (yearArray[mid].yearName == year) 
+            return mid;
+
+        if (yearArray[mid].yearName > year)
+            return searchYears(l, mid + 1, year);
+
+        else 
+            return searchYears(mid + 1, r, year);
+    }
+
+    return -1;
 
 }
 
