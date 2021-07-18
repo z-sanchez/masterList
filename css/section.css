@@ -22,10 +22,12 @@ Styles date on site
 */
 .date {
     align-self: center;
+    text-align: center;
     position: relative;
     bottom: 18px;
     font-family: sspsemibold;
-    padding: 10px 80px 10px 80px;
+    width: 40%;
+    padding: 10px 0 10px 0;
     background-color: #06D6A0;
     border-radius: 40px;
     color: white;

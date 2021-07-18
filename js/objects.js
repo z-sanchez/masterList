@@ -8,6 +8,7 @@ function yearObject(yearName, monthArray) {
 
     this.yearName = yearName;
     this.monthArray = monthArray;
+    this.memory = false;
 
 }
 
@@ -83,3 +84,12 @@ function fillMonthArray(year) {
 }
 
 
+//fixMissingYear checks to see if a year exist within the yearsArray, if it doesn't the year is created
+function fixMissingYear (year) {
+
+    if (searchYears(0, yearsStored -1, year) == -1)
+        createYear(year);
+    else 
+        return;
+
+}

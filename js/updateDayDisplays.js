@@ -1,37 +1,61 @@
 const dayDisplays = document.querySelectorAll('.dayDisplay');
-
 const nextButton = document.getElementById('nextButton');
 const backButton = document.getElementById('backButton');
 
 
-setDateDisplay(1, 17, 2021);
 
+setDateDisplay(1, 20, 2000);
 
+//setDateDisplay updates the date headers on each day item in the DOM
 function setDateDisplay(month, date, year) {
 
-    if (searchYears(year) == -1) 
-        createYear(year);
+    fixMissingYear(year); 
 
-    let indexOfYear = searchYears(0, yearArray.length -1, year),
-        foundYear = yearArray[indexOfYear];
+    let foundYear = yearArray[searchYears(0, yearsStored -1, year)], //intializes the year to be dealt with
+        dayLocator = -2; //used to show the day before the date, the day of, and the next date. Incremented by one each loop
 
-    //check for cases where the next and previous days are different months and year
-    //edit css so longer dates don't stretch display
+    for (let i = 0; i < 3; ++i) { //loop runs through editing day items on page left to right
 
-    let dayLocator = -2;
+        var dateReference; 
 
-    for (let i = 0; i < 3; ++i) {
-        dayDisplays[i].children[0].innerHTML = foundYear.monthArray[month -1][date + dayLocator].date;
+        if (Math.sign(date + dayLocator) == -1) { //if the previous day is a negative date
+
+            if (month == 1) { //if the previous date is in a new year
+                fixMissingYear(year-1);
+                dateReference = yearArray[searchYears(0, yearsStored -1, year-1)].monthArray[11][30].date;
+            }
+            else { //else locate the last day of previous month and display
+                let newDate = foundYear.monthArray[month -2].length - 1;
+                dateReference = foundYear.monthArray[month -2][newDate].date;
+            }
+
+        }
+        else if (foundYear.monthArray[month -1][date + dayLocator] == undefined) { //if next day is in different month
+
+            if (month == 12) { //if new year, create a new year and show first day of that year
+                fixMissingYear(year+1);
+                dateReference =  yearArray[searchYears(0, yearsStored -1, year+1)].monthArray[0][0].date;
+            }
+            else {
+                dateReference = foundYear.monthArray[month][0].date;
+            }
+
+        }
+        else {
+            dateReference = foundYear.monthArray[month -1][date + dayLocator].date; //else leave the month the same and project next day 
+        }
+
+        dayDisplays[i].children[0].innerHTML = dateReference;
         ++dayLocator;
     }
 }
 
 
-
 nextButton.addEventListener("click", () => {
 
 
-
+    
+    setDateDisplay();
 
 
 
