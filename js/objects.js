@@ -83,13 +83,3 @@ function fillMonthArray(year) {
 }
 
 
-
-createYear(2021); //current year
-//test years
-createYear(2024);
-createYear(2001);
-createYear(2421);
-createYear(1945);
-createYear(2013);
-createYear(1988);
-createYear(2018);
