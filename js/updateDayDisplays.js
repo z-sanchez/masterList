@@ -64,9 +64,10 @@ nextButton.addEventListener("click", () => {
     let index = searchYears(0, yearsStored -1, currentDay.year);
     projectedDate = yearArray[index].monthArray[currentDay.month -1];
 
-    validDatePromise(projectedDate).then((outputDate) => {
+    validDatePromise(projectedDate)
+    .then((outputDate) => {
         console.log("valid month: " + currentDay.month);
-        validDatePromise(outputDate[currentDay.day -1]);
+        return validDatePromise(outputDate[currentDay.day -1]);
     }).then((outputDate) => {
         console.log("valid date: " + currentDay.day);
         setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
@@ -74,7 +75,6 @@ nextButton.addEventListener("click", () => {
         console.log(message);
     });
 
-//fix uncaught error 
 //then edit date based on positive or negative numbers in a months days
 
 
