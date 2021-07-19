@@ -2,9 +2,11 @@ const dayDisplays = document.querySelectorAll('.dayDisplay');
 const nextButton = document.getElementById('nextButton');
 const backButton = document.getElementById('backButton');
 
-
-
-setDateDisplay(1, 20, 2000);
+var currentDay = {
+    month: 1,
+    day: 25,
+    year: 2021
+};
 
 //setDateDisplay updates the date headers on each day item in the DOM
 function setDateDisplay(month, date, year) {
@@ -53,16 +55,47 @@ function setDateDisplay(month, date, year) {
 
 nextButton.addEventListener("click", () => {
 
+    ++currentDay.day;
 
-    
-    setDateDisplay();
+    let projectedDate = undefined;
 
+    fixMissingYear(currentDay.year);
 
+    let index = searchYears(0, yearsStored -1, currentDay.year);
+    projectedDate = yearArray[index].monthArray[currentDay.month -1];
 
+    validDatePromise(projectedDate).then((outputDate) => {
+        console.log("valid month: " + currentDay.month);
+        validDatePromise(outputDate[currentDay.day -1]);
+    }).then((outputDate) => {
+        console.log("valid date: " + currentDay.day);
+        setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
+    }).catch(message => {
+        console.log(message);
+    });
 
-
+//fix uncaught error 
+//then edit date based on positive or negative numbers in a months days
 
 
 });
+
+
+
+
+function validDatePromise (date) {
+
+    return new Promise((resolve, reject) => {
+
+        if (date == undefined) {
+            reject("incorrect date");
+        }
+        else {
+            resolve(date);
+        }
+
+    })
+}
+
 
 
