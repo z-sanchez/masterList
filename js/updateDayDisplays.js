@@ -73,13 +73,23 @@ nextButton.addEventListener("click", () => {
         setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
     }).catch(message => {
         console.log(message);
-
-        if (Math.sign(currentDay.day) == 1)
+        if (Math.sign(currentDay.day) == 1) {
             console.log('small price to pay for salvation');
             ++currentDay.month;
-            currentDay.day = 1;
-            setDateDisplay(currentDay.month, 1, currentDay.year);
+
+            if (currentDay.month == 13) {
+                currentDay.year = currentDay.year +1;
+                fixMissingYear(currentDay.year);
+                currentDay.month = 1;
+                currentDay.day = 1;
+                setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
+            }
+            else {
+                currentDay.day = 1;
+                setDateDisplay(currentDay.month, 1, currentDay.year);
+            }
             //find next year
+        }
     });
 
 //then edit date based on positive or negative numbers in a months days
