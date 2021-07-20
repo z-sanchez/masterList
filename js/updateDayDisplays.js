@@ -2,6 +2,8 @@ const dayDisplays = document.querySelectorAll('.dayDisplay');
 const nextButton = document.getElementById('nextButton');
 const backButton = document.getElementById('backButton');
 
+const buttons = [nextButton, backButton];
+
 var currentDay = {
     month: 12,
     day: 25,
@@ -52,49 +54,62 @@ function setDateDisplay(month, date, year) {
     }
 }
 
+buttons.forEach(element => {
+    element.addEventListener("click", (event) => {
 
-nextButton.addEventListener("click", () => {
-
-    ++currentDay.day;
-
-    let projectedDate = undefined;
-
-    fixMissingYear(currentDay.year);
-
-    let index = searchYears(0, yearsStored -1, currentDay.year);
-    projectedDate = yearArray[index].monthArray[currentDay.month -1];
-
-    validDatePromise(projectedDate)
-    .then((outputDate) => {
-        console.log("valid month: " + currentDay.month);
-        return validDatePromise(outputDate[currentDay.day -1]);
-    }).then((outputDate) => {
-        console.log("valid date: " + currentDay.day);
-        setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
-    }).catch(message => {
-        console.log(message);
-        if (Math.sign(currentDay.day) == 1) {
-            console.log('small price to pay for salvation');
-            ++currentDay.month;
-
-            if (currentDay.month == 13) {
-                currentDay.year = currentDay.year +1;
-                fixMissingYear(currentDay.year);
-                currentDay.month = 1;
-                currentDay.day = 1;
-                setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
+        if (event.target == nextButton)
+            ++currentDay.day;
+        else
+            --currentDay.day;
+    
+        let projectedDate = undefined;
+    
+        fixMissingYear(currentDay.year);
+    
+        let index = searchYears(0, yearsStored -1, currentDay.year);
+        projectedDate = yearArray[index].monthArray[currentDay.month -1];
+    
+        validDatePromise(projectedDate)
+        .then((outputDate) => {
+            console.log("valid month: " + currentDay.month);
+            return validDatePromise(outputDate[currentDay.day -1]);
+        }).then((outputDate) => {
+            console.log("valid date: " + currentDay.day);
+            setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
+        }).catch(message => {
+            console.log(message);
+            if (Math.sign(currentDay.day) == 1) {
+                ++currentDay.month;
+                if (currentDay.month == 13) {
+                    currentDay.year = currentDay.year +1;
+                    fixMissingYear(currentDay.year);
+                    currentDay.month = 1;
+                    currentDay.day = 1;
+                    setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
+                }
+                else {
+                    currentDay.day = 1;
+                    setDateDisplay(currentDay.month, 1, currentDay.year);
+                }
             }
             else {
-                currentDay.day = 1;
-                setDateDisplay(currentDay.month, 1, currentDay.year);
+                --currentDay.month;
+                    if (currentDay.month == 0) {
+                        currentDay.year = currentDay.year -1;
+                        fixMissingYear(currentDay.year);
+                        currentDay.month = 12;
+                        currentDay.day = 31;
+                        setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
+                    }
+                    else {
+                        currentDay.day = 31;
+                        setDateDisplay(currentDay.month, 31, currentDay.year);
+                    }
             }
-            //find next year
-        }
+        });
+    
+    //some reason moving back to previous month coming from december 1 takes two clicks
     });
-
-//then edit date based on positive or negative numbers in a months days
-
-
 });
 
 
