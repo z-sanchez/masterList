@@ -3,7 +3,7 @@ const nextButton = document.getElementById('nextButton');
 const backButton = document.getElementById('backButton');
 
 var currentDay = {
-    month: 1,
+    month: 12,
     day: 25,
     year: 2021
 };
@@ -73,6 +73,13 @@ nextButton.addEventListener("click", () => {
         setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
     }).catch(message => {
         console.log(message);
+
+        if (Math.sign(currentDay.day) == 1)
+            console.log('small price to pay for salvation');
+            ++currentDay.month;
+            currentDay.day = 1;
+            setDateDisplay(currentDay.month, 1, currentDay.year);
+            //find next year
     });
 
 //then edit date based on positive or negative numbers in a months days
