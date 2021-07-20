@@ -4,6 +4,7 @@ const backButton = document.getElementById('backButton');
 
 const buttons = [nextButton, backButton];
 
+//Object that tracks currently displayed day
 var currentDay = {
     month: 12,
     day: 25,
@@ -58,57 +59,58 @@ buttons.forEach(element => {
     element.addEventListener("click", (event) => {
 
         if (event.target == nextButton)
-            ++currentDay.day;
+            ++currentDay.day; //add to days date if next button
         else
-            --currentDay.day;
+            --currentDay.day; //subtract to days date if back button
     
-        let projectedDate = undefined;
+        let projectedDate = undefined; //variable used to store suggested date in the calendar object for validation
     
-        fixMissingYear(currentDay.year);
+        fixMissingYear(currentDay.year); //may not need this
     
+        //finds projected date in calendar object
         let index = searchYears(0, yearsStored -1, currentDay.year);
         projectedDate = yearArray[index].monthArray[currentDay.month -1];
     
-        validDatePromise(projectedDate)
-        .then((outputDate) => {
+        validDatePromise(projectedDate) //promise validated whether the proposed date is acceptable
+        .then((outputDate) => { //first checks the month
             console.log("valid month: " + currentDay.month);
             return validDatePromise(outputDate[currentDay.day -1]);
-        }).then((outputDate) => {
+        }).then((outputDate) => { //then checks the day
             console.log("valid date: " + currentDay.day);
             setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
-        }).catch(message => {
+        }).catch(message => { //if date incorrect (can only happen from new month and or new year)
             console.log(message);
-            if (Math.sign(currentDay.day) == 1) {
-                ++currentDay.month;
-                if (currentDay.month == 13) {
+            if (Math.sign(currentDay.day) == 1) { //if day is positive (ex. 1/32/21)
+                ++currentDay.month; //next month
+                if (currentDay.month == 13) { //if month is in next year
                     currentDay.year = currentDay.year +1;
-                    fixMissingYear(currentDay.year);
-                    currentDay.month = 1;
+                    fixMissingYear(currentDay.year); //create the new year
+                    currentDay.month = 1; //reset the date
                     currentDay.day = 1;
                     setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
                 }
-                else {
-                    currentDay.day = 1;
+                else { //else just push date back to one with the new month already in place from previous code
+                    currentDay.day = 1; 
                     setDateDisplay(currentDay.month, 1, currentDay.year);
                 }
             }
-            else {
-                --currentDay.month;
-                    if (currentDay.month == 0) {
+            else { //if day is negative (back button was pressed to invalid date)
+                --currentDay.month; //set month back one
+                    if (currentDay.month == 0) { //if month is in previous year
                         currentDay.year = currentDay.year -1;
-                        fixMissingYear(currentDay.year);
+                        fixMissingYear(currentDay.year); //create or fix new year
                         currentDay.month = 12;
-                        currentDay.day = 31;
+                        currentDay.day = 31; //set date to last day of that year
                         setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
                     }
-                    else {
-                        currentDay.day = 31;
-                        setDateDisplay(currentDay.month, 31, currentDay.year);
+                    else { //if month is just the one before
+                        let index = searchYears(0, yearsStored -1, currentDay.year);
+                        projectedDate = yearArray[index].monthArray[currentDay.month -1]; //find the new month 
+                        currentDay.day = projectedDate.length; //then find the amount of day for accurate day (fixes leap years, month ending in 30, and 31)
+                        setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
                     }
             }
         });
-    
-    //some reason moving back to previous month coming from december 1 takes two clicks
     });
 });
 

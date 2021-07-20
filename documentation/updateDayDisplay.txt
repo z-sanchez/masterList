@@ -1,0 +1,44 @@
+currentDay is an object which holds the currenty displayed date
+
+The application works by showing the currentDay in the center of the screen with the 
+previous day and next day displayed in their respective position
+
+
+setDayDisplay() takes a date with the month, day, and year described. It then dayDisplays
+the date after running it through an algorithm to validate the date. First, fixMissingYear()
+is called. This creates the year in the yearArray if it does not already exist and does nothing if it does.
+foundYear is then intialized to the year object inside of the year array. dayLocator
+is then set to -2. This is used in the for loop. The loop cycles three times to display
+each day. Once for the previous date, current date, and next date. Adding the dayLocator
+to the date will find the index of the correct day in monthArray. dateReference is used
+to hold the current date object to be displayed. If statements are then defined to identify
+if the dayLocator and date have accessed invalid dates. If a negative number date has been accessed
+the algorithm checks if the current month is january, if it is a new year must be created and 
+the dateReference is then set to the last day of december in the previous year. Else the 
+locates the previous month and finds its number of days to set the new current date 
+and sets that to the dateReference. Else if a an object located using the date is 
+undeifned the object is in part of the monthArray which isn't meant to hold data, this means
+a day in the next month and or year needs to be found and accessed. if month equals 
+december fixMissingYear() on next year and set dateReference to the first day of the next year.
+else acccess next month and first day of that month and set the dateReference to it.
+Finally if an accurate date is found first try, set the date dateReference to it and update screen
+and up dayLocator by one.
+
+
+
+Now when functioning the two buttoms to cycle through dates on screen, I repeated myself in
+validating whether a date was acceptable. In setDateDisplay() it changes invalid dates to correct
+ones but doesn't update the currentDay object. In the buttons functioning is does both using promises.
+I like the second code better but needs to be implemented in a way where I don't repeat myself.
+
+Each button has an addEventListener which updates currentDay object by subtrating or adding 
+to the currentDay.date depending on which button is triggered. A projectedDate variable
+is then created. This variable is used to carry a date. First it carries the year of the
+currentDay object, it's month array, and the current month. It is then passed into a promises
+which validates the projectedDate ensuring it isn't empty space (undefined). Then the 
+currentDay.date is used to acccess the projectedDate's objects. What is found is then passed
+through the promise again. If anything falls apart, the catch statement does almost exaclty What
+my previous setDateDisplay() function does. I WAS DRUNK! Catch checks if the updated date
+is negative or positive. Then resets the dates similairy to the other function.
+
+Might need to consilidate later.

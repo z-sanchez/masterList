@@ -1,0 +1,24 @@
+This document carries the objects that make up the general calendar for the web application
+
+Every year object holds a yearName, monthArray, and memory boolean variable
+- yearName is used to identify the year
+- monthArray is used to hold month objects
+- memory is meant to signify if the year carries in user inputed date
+this will be used to delete a year if it is useless
+
+Each year is then stored in the yearArray, a list of all the created years in the application
+
+createYear() function creates a new year object given its name, and calls 
+fillMonthArray(), stores year in yearArray, and calls a sort on the array using
+the funciton from searchSort.js
+
+fillMonthArray() accesses a given years monthArray and fills it. First by giving the
+first 12 indexes an array to store. This creates a 2D array. Afterwards, the funtion 
+throws a while loop in which i = 0 and must continue until it is equal to 12 (++i at end of loop)
+A series of if statements then identify whether the month has 31 or 30 days.
+(using arrays contatining the months (identified as ex. Jan == 0) which have 30 or 31)
+That new found index is then filled with a dayObject. The function ends with an adjustment
+of the month february on leap years 
+
+dayObject contains a date, month, year, numTask, taskArray, and onScreen bool.
+it fills these in given a day, month, year. numTask = 0, taskArray is empty and bool is false by default.
