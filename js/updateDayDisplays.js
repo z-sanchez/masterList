@@ -6,8 +6,8 @@ const buttons = [nextButton, backButton];
 
 //Object that tracks currently displayed day
 var currentDay = {
-    month: 12,
-    day: 25,
+    month: 7,
+    day: 22,
     year: 2021
 };
 
@@ -53,6 +53,7 @@ function setDateDisplay(month, date, year) {
         dayDisplays[i].children[0].innerHTML = dateReference;
         ++dayLocator;
     }
+    dateTextBox.value = currentDay.month + "/" + currentDay.day + "/"  + currentDay.year;
 }
 
 buttons.forEach(element => {

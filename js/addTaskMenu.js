@@ -37,7 +37,7 @@ taskTitle.innerHTML = "Title";
 taskTextBox.setAttribute("type", "text");
 dateTitle.innerHTML = "Date";
 dateTextBox.setAttribute("type", "text");
-dateTextBox.value = "MM/DD/YYYY";
+dateTextBox.value = currentDay.month + "/" + currentDay.day + "/"  + currentDay.year;
 checkMark.src = "/images/checkMark.png";
 addTaskWindow.appendChild(innerFlex);
 innerFlex.appendChild(taskTitle);
@@ -46,16 +46,53 @@ innerFlex.appendChild(dateTitle);
 innerFlex.appendChild(dateTextBox);
 innerFlex.appendChild(checkMark);
 
+let onScreen = 1;
+
+
+
+//FIX THIS SHIT LATRER!!
+body.addEventListener('click', (event) => {
+
+    if (event.target.id == "add") {
+        onScreen = 2;
+        console.log("1");
+        return;
+    }
+
+    if (event.target.classList == 'windowFlex' && onScreen == 2 || event.target.classList == 'fade' && onScreen == 2 ) {
+        closeScreen();
+        console.log(event.target);
+    }
+
+
+})
 
 
 
 function displayAddScreen() {
 
+
     body.appendChild(overlayFade);
 
     body.appendChild(windowFlex);
 
+
 }
+
+function closeScreen() {
+
+    body.removeChild(overlayFade);
+    body.removeChild(windowFlex);
+    onScreen = 1;
+}
+
+
+
+checkMark.addEventListener('click', () => {
+
+    closeScreen();
+
+});
 
 
 addTask.addEventListener('click', () => {
@@ -63,16 +100,10 @@ addTask.addEventListener('click', () => {
     displayAddScreen();
 
 
-
-    checkMark.addEventListener('click', () => {
-
-        body.removeChild(overlayFade);
-        body.removeChild(windowFlex);
-
-    })
-
-
 });
+
+
+
 
 //add task (store tasks as well)
 
