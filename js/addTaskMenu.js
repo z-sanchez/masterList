@@ -38,7 +38,7 @@ taskTextBox.setAttribute("type", "text");
 dateTitle.innerHTML = "Date";
 dateTextBox.setAttribute("type", "text");
 dateTextBox.value = "mm/dd/yyyy";
-checkMark.src = "/images/checkMark.png";
+checkMark.src = "../images/checkMark.png";
 addTaskWindow.appendChild(innerFlex);
 innerFlex.appendChild(taskTitle);
 innerFlex.appendChild(taskTextBox);

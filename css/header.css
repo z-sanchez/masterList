@@ -4,12 +4,12 @@ Importing Fonts
 
 @font-face {
     font-family: ssplight;
-    src: url(/fonts/SourceSansPro-Light.ttf);
+    src: url(fonts/SourceSansPro-Light.ttf);
 }
 
 @font-face {
     font-family: sspsemibold;
-    src: url(/fonts/SourceSansPro-SemiBold.ttf);
+    src: url(fonts/SourceSansPro-SemiBold.ttf);
 }
 
 
