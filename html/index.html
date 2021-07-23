@@ -26,7 +26,7 @@
         </header>
 
         <nav class="navFlex">
-            <img class="customPhoto" src="/images/calendar.png" alt="calendar">
+            <img class="customPhoto" id="calendar" src="/images/calendar.png" alt="calendar">
             <p>July - Week 28</p>
             <img class="customPhoto" id="add" src="/images/add.png" alt="addButton">
         </nav>
@@ -37,19 +37,19 @@
             <div class="dayDisplay">
                 <h2 class="date">?</h2>
                 <div class="itemList">
-                    <div class="listItemBorder">
-                        <input type="radio" class="radio" value="done">
-                        <label class="item">To Do Item 1</label>
-                    </div>
                 </div>
             </div>
 
             <div class="dayDisplay">
                 <h2 class="date">?</h2>
+                <div class="itemList">
+                </div>
             </div>
             
             <div class="dayDisplay">
                 <h2 class="date">?</h2>
+                <div class="itemList">
+                </div>
             </div>
 
             <img id= "nextButton" class="customPhoto" src="/images/foward.png" alt="fowardButton">
@@ -58,7 +58,10 @@
     </div>
     <script src="/js/searchSort.js"></script>
     <script src="/js/objects.js"></script>
+    <script src="/js/bootUp.js"></script>
     <script src="/js/updateDayDisplays.js"></script>
     <script src="/js/addTaskMenu.js"></script>
+    <script src="/js/taskOperations.js"></script>
+    <script src="/js/calendarButton.js"></script>
 </body>
 </html>

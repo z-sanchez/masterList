@@ -37,7 +37,7 @@ taskTitle.innerHTML = "Title";
 taskTextBox.setAttribute("type", "text");
 dateTitle.innerHTML = "Date";
 dateTextBox.setAttribute("type", "text");
-dateTextBox.value = currentDay.month + "/" + currentDay.day + "/"  + currentDay.year;
+dateTextBox.value = "mm/dd/yyyy";
 checkMark.src = "/images/checkMark.png";
 addTaskWindow.appendChild(innerFlex);
 innerFlex.appendChild(taskTitle);
@@ -55,13 +55,11 @@ body.addEventListener('click', (event) => {
 
     if (event.target.id == "add") {
         onScreen = 2;
-        console.log("1");
         return;
     }
 
     if (event.target.classList == 'windowFlex' && onScreen == 2 || event.target.classList == 'fade' && onScreen == 2 ) {
         closeScreen();
-        console.log(event.target);
     }
 
 
@@ -71,11 +69,8 @@ body.addEventListener('click', (event) => {
 
 function displayAddScreen() {
 
-
     body.appendChild(overlayFade);
-
     body.appendChild(windowFlex);
-
 
 }
 
@@ -90,7 +85,19 @@ function closeScreen() {
 
 checkMark.addEventListener('click', () => {
 
-    closeScreen();
+    if (taskTextBox.value.length == 0) {
+        window.alert("No Task Entered");
+        displayAddScreen();
+        return;
+    }
+
+    if (dateTextBox.value.length == 0) {
+        window.alert("No Date Entered");
+        displayAddScreen();
+        return;
+    }
+    
+    storeData();
 
 });
 
@@ -105,9 +112,3 @@ addTask.addEventListener('click', () => {
 
 
 
-//add task (store tasks as well)
-
-
-//show tasks with event listener to delete (call when updating display)
-
-//find alternative to display none problem 

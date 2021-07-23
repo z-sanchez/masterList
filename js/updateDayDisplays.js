@@ -4,12 +4,6 @@ const backButton = document.getElementById('backButton');
 
 const buttons = [nextButton, backButton];
 
-//Object that tracks currently displayed day
-var currentDay = {
-    month: 7,
-    day: 22,
-    year: 2021
-};
 
 //setDateDisplay updates the date headers on each day item in the DOM
 function setDateDisplay(month, date, year) {
@@ -27,11 +21,11 @@ function setDateDisplay(month, date, year) {
 
             if (month == 1) { //if the previous date is in a new year
                 fixMissingYear(year-1);
-                dateReference = yearArray[searchYears(0, yearsStored -1, year-1)].monthArray[11][30].date;
+                dateReference = yearArray[searchYears(0, yearsStored -1, year-1)].monthArray[11][30];
             }
             else { //else locate the last day of previous month and display
                 let newDate = foundYear.monthArray[month -2].length - 1;
-                dateReference = foundYear.monthArray[month -2][newDate].date;
+                dateReference = foundYear.monthArray[month -2][newDate];
             }
 
         }
@@ -39,22 +33,27 @@ function setDateDisplay(month, date, year) {
 
             if (month == 12) { //if new year, create a new year and show first day of that year
                 fixMissingYear(year+1);
-                dateReference =  yearArray[searchYears(0, yearsStored -1, year+1)].monthArray[0][0].date;
+                dateReference =  yearArray[searchYears(0, yearsStored -1, year+1)].monthArray[0][0];
             }
             else {
-                dateReference = foundYear.monthArray[month][0].date;
+                dateReference = foundYear.monthArray[month][0];
             }
 
         }
         else {
-            dateReference = foundYear.monthArray[month -1][date + dayLocator].date; //else leave the month the same and project next day 
+            dateReference = foundYear.monthArray[month -1][date + dayLocator]; //else leave the month the same and project next day 
         }
 
-        dayDisplays[i].children[0].innerHTML = dateReference;
+
+        dayDisplays[i].children[0].innerHTML = dateReference.date;
+        dayDisplays[i].children[1].innerHTML = "";
+        displayTask(dateReference, i);
         ++dayLocator;
     }
-    dateTextBox.value = currentDay.month + "/" + currentDay.day + "/"  + currentDay.year;
 }
+
+
+
 
 buttons.forEach(element => {
     element.addEventListener("click", (event) => {
@@ -64,23 +63,7 @@ buttons.forEach(element => {
         else
             --currentDay.day; //subtract to days date if back button
     
-        let projectedDate = undefined; //variable used to store suggested date in the calendar object for validation
-    
-        fixMissingYear(currentDay.year); //may not need this
-    
-        //finds projected date in calendar object
-        let index = searchYears(0, yearsStored -1, currentDay.year);
-        projectedDate = yearArray[index].monthArray[currentDay.month -1];
-    
-        validDatePromise(projectedDate) //promise validated whether the proposed date is acceptable
-        .then((outputDate) => { //first checks the month
-            console.log("valid month: " + currentDay.month);
-            return validDatePromise(outputDate[currentDay.day -1]);
-        }).then((outputDate) => { //then checks the day
-            console.log("valid date: " + currentDay.day);
-            setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
-        }).catch(message => { //if date incorrect (can only happen from new month and or new year)
-            console.log(message);
+        if (checkValidDate(currentDay.month, currentDay.day, currentDay.year) == false) {
             if (Math.sign(currentDay.day) == 1) { //if day is positive (ex. 1/32/21)
                 ++currentDay.month; //next month
                 if (currentDay.month == 13) { //if month is in next year
@@ -110,27 +93,35 @@ buttons.forEach(element => {
                         currentDay.day = projectedDate.length; //then find the amount of day for accurate day (fixes leap years, month ending in 30, and 31)
                         setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
                     }
-            }
-        });
+            }      
+        }
+        else {
+            setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
+        }
     });
 });
 
 
 
+function checkValidDate(month, day, year) {
 
-function validDatePromise (date) {
+    var validDate = false;
 
-    return new Promise((resolve, reject) => {
+    let projectedDate = undefined; //variable used to store suggested date in the calendar object for validation
 
-        if (date == undefined) {
-            reject("incorrect date");
-        }
-        else {
-            resolve(date);
-        }
+    fixMissingYear(year); //may not need this
 
-    })
+    //finds projected date in calendar object
+    let index = searchYears(0, yearsStored -1, year);
+    projectedDate = yearArray[index].monthArray[month -1];
+
+    if (projectedDate != undefined) {
+        if (projectedDate[day -1] != undefined)
+            validDate = true;
+    }
+
+    return validDate;
+
 }
-
 
 
