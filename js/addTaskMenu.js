@@ -62,7 +62,6 @@ body.addEventListener('click', (event) => {
         closeScreen();
     }
 
-
 })
 
 
@@ -79,6 +78,7 @@ function closeScreen() {
     body.removeChild(overlayFade);
     body.removeChild(windowFlex);
     onScreen = 1;
+
 }
 
 
@@ -105,7 +105,6 @@ checkMark.addEventListener('click', () => {
 addTask.addEventListener('click', () => {
 
     displayAddScreen();
-
 
 });
 

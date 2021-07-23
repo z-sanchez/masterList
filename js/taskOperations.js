@@ -31,6 +31,10 @@ function storeData() {
         let foundDay = yearArray[index].monthArray[today.month -1][today.day -1];
         foundDay.taskArray[foundDay.numTask] = task;
         ++foundDay.numTask;
+
+
+        setDateDisplay(currentDay.month, currentDay.day, currentDay.year); 
+    
         return;
     }
 
@@ -58,6 +62,9 @@ function storeData() {
             let foundDay = yearArray[index].monthArray[storeMonth -1][storeDay -1];
             foundDay.taskArray[foundDay.numTask] = task;
             ++foundDay.numTask;
+
+            if (storeMonth == currentDay.month && storeDay == currentDay.day && storeYear == currentDay.year) 
+                setDateDisplay(storeMonth, storeDay, storeYear);
         }
         else {
             window.alert("Invalid Date");
@@ -84,7 +91,6 @@ function displayTask(dateRef, dayNum) {
             date: dateRef
         };
 
-        console.log(clone.taskIndex);
         clone.structure.children[1].innerText = dateRef.taskArray[i];
 
         clone.structure.addEventListener('click', (event) => {

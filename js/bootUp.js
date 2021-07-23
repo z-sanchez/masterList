@@ -1,3 +1,6 @@
+var backgroundColor = document.querySelector('body');
+
+
 //Object that tracks currently displayed day
 var currentDay = {
     month: 7,
@@ -5,19 +8,39 @@ var currentDay = {
     year: 2021
 };
 
+
+var today = new Date();
+
 //today today
 var today = {
-    month: 7,
-    day: 22,
-    year: 2021
+    month: today.getMonth() +1,
+    day: today.getDate(),
+    year: today.getFullYear()
 };
 
 window.onload = function () {
-    setDateDisplay(currentDay.month, currentDay.day, currentDay.year);
+    setDateDisplay(today.month, today.day, today.year);
+
+    currentDay.month = today.month;
+    currentDay.day = today.day;
+    currentDay.year = today.year;
+
 };
 
 
-//task with over 7 thingies stop
+function color(color) {
+
+    backgroundColor.style.backgroundColor = color;
+
+
+}
+
+
+
+
+
+//comment new code 
+//task with over 7 thingies stop (menu for seeing that days todo's)
 
 // end lettering if its too long
 

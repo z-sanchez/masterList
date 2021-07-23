@@ -103,8 +103,8 @@ calendarCheckMark.addEventListener('click', () => {
 
 function goTo(jumpMonth, jumpDay, jumpYear) {
     currentDay.month = jumpMonth;
-    currentDay.Day = jumpDay;
-    currentDay.Year = jumpYear;
+    currentDay.day = jumpDay;
+    currentDay.year = jumpYear;
 
     setDateDisplay(jumpMonth, jumpDay, jumpYear);
 }
